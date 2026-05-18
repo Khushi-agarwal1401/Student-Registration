@@ -51,5 +51,5 @@ app.get("/students", (req, res) => {
 });
 
 app.listen(3000, () => {
-    console.log("Server running on http://localhost:3000");
+    console.log("Server running on https://student-registration-id5p.onrender.com");
 });
