@@ -8,7 +8,7 @@ async function addStudent() {
         return;
     }
 
-    const response = await fetch("https://student-registration-id5p.onrender.com", {
+    const response = await fetch("https://student-registration-id5p.onrender.com/add-student", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -30,7 +30,7 @@ async function addStudent() {
 }
 
 async function getStudents() {
-    const response = await fetch("https://student-registration-id5p.onrender.com");
+    const response = await fetch("https://student-registration-id5p.onrender.com/students");
 
     const students = await response.json();
 
