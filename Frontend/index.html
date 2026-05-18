@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Student Registration</h1>
+
+        <input type="text" id="name" placeholder="Enter your name">
+        <input type="email" id="email" placeholder="Enter your email">
+        <input type="text" id="course" placeholder="Enter your course">
+
+        <button onclick="addStudent()">Submit</button>
+
+        <p id="message"></p>
+
+        <h2>Student List</h2>
+        <button onclick="getStudents()">Show Students</button>
+
+        <ul id="studentList"></ul>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
