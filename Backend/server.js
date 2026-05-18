@@ -7,7 +7,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const db = mysql.createConnection({
+// Use the DATABASE_URL environment variable if available (Render/Aiven),
+// otherwise fallback to local hardcoded values for local development.
+const db = mysql.createConnection(process.env.DATABASE_URL || {
     host: "127.0.0.1",
     port: 3306,
     user: "root",
@@ -21,6 +23,22 @@ db.connect((err) => {
         console.log(err);
     } else {
         console.log("Connected to MySQL database");
+        // Automatically create the students table if it doesn't exist yet!
+        const createTableSql = `
+            CREATE TABLE IF NOT EXISTS students (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                name VARCHAR(255) NOT NULL,
+                email VARCHAR(255) NOT NULL,
+                course VARCHAR(255) NOT NULL
+            )
+        `;
+        db.query(createTableSql, (err, result) => {
+            if (err) {
+                console.log("Error creating table:", err);
+            } else {
+                console.log("Students table is ready!");
+            }
+        });
     }
 });
 
